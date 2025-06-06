@@ -15,10 +15,11 @@
     flake-utils.lib.eachDefaultSystem (
       system: let
         pkgs = import nixpkgs {inherit system;};
+        version = "0.1.0";
       in {
-        packages.default = pkgs.buildGoModule rec {
+        packages.default = pkgs.buildGoModule {
           pname = "govanityurls";
-          version = "0.1.0";
+          inherit version;
 
           src = pkgs.fetchFromGitHub {
             owner = "GoogleCloudPlatform";
