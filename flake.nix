@@ -17,7 +17,7 @@
         pkgs = import nixpkgs {inherit system;};
         version = "0.1.0";
       in {
-        packages.default = pkgs.buildGoModule {
+        packages.govanityurls = pkgs.buildGoModule {
           pname = "govanityurls";
           inherit version;
 
@@ -34,7 +34,7 @@
       }
     )
     // {
-      nixosModules.default = {
+      nixosModules.govanityurls = {
         config,
         lib,
         pkgs,
@@ -50,7 +50,7 @@
 
             package = mkOption {
               type = types.package;
-              default = self.packages.${pkgs.system}.default;
+              default = self.packages.${pkgs.system}.govanityurls;
               description = "govanityurls package to use.";
             };
 
